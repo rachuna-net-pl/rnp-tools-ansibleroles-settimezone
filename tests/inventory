@@ -1,2 +1,18 @@
-localhost
-
+all:
+  children:
+    Ubuntu:
+      hosts:
+        vmdev-test-ubuntu.rachuna-net.pl:
+            ansible_ssh_host: 192.168.33.100
+    CentOS:
+      hosts:
+        vmdev-test-centos7.rachuna-net.pl:
+            ansible_ssh_host: 192.168.33.101
+        vmdev-test-centos8.rachuna-net.pl:
+            ansible_ssh_host: 192.168.33.102
+    RedHat:
+      hosts:
+        vmdev-test-rhel7.rachuna-net.pl:
+            ansible_ssh_host: 192.168.33.103
+        vmdev-test-rhel8.rachuna-net.pl:
+            ansible_ssh_host: 192.168.33.104

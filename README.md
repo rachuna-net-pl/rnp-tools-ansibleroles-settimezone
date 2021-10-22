@@ -1,38 +1,50 @@
-Role Name
+rnp-tools-ansibleroles-settimezone
 =========
 
-A brief description of the role goes here.
+Ansible Role - Set locale
 
-Requirements
-------------
-
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+![Overwiew](https://gitlab.com/rachuna-net.pl/tools/ansibleroles/rnp-tools-ansibleroles-settimezone/-/raw/develop/docs/settimezone.png)
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Defaults role values:
+```
+input_time_zone:
+  name: "Europe/Warsaw"
+  src:  "/usr/share/zoneinfo/Europe/Warsaw"
 
-Dependencies
-------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+input_locale_list:
+  - en_US.UTF-8
+  - pl_PL.UTF-8
+```
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+```
+  - hosts: localhost
+    remote_user: root
+    tasks:
+    - include_role:
+        name: rnp-tools-ansible-roles-setimezone
+      vars:
+        input_time_zone:
+          name: "Europe/Warsaw"
+          src:  "/usr/share/zoneinfo/Europe/Warsaw"
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+        input_locale_list:
+          - en_US.UTF-8
+          - pl_PL.UTF-8
+```
 
 License
 -------
 
-BSD
+BSD 3-Clause
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+### Maciej Rachuna
+SysOps/DevOps
