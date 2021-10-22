@@ -1,2 +1,7 @@
----
-# defaults file for .
+input_time_zone:
+  name: "Europe/Warsaw"
+  src:  "/usr/share/zoneinfo/Europe/Warsaw"
+
+input_locale_list:
+  - en_US.UTF-8
+  - pl_PL.UTF-8
