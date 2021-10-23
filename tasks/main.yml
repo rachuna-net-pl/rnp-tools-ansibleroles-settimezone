@@ -1,0 +1,26 @@
+- name: Set timezone
+  become: yes
+  copy:
+    content: "{{ input_time_zone.name }}"
+    force:   yes
+    dest:    /etc/timezone
+
+- name: Copy localtime
+  become: yes
+  copy:
+    remote_src: yes
+    src:        "{{ input_time_zone.src }}"
+    dest:       /etc/localtime
+
+- name: Generate locale
+  ignore_errors: yes
+  locale_gen:
+    name:  "{{ item }}"
+    state: present
+  with_items: "{{ input_locale_list }}"
+
+- name: Create missing locales
+  command: "localedef -i {{ item | regex_replace('(.*)\\..*', '\\1')  }} -f {{ item | regex_replace('.*\\.(.*)', '\\1') }} {{ item }}"
+  loop: "{{ input_locale_list }}"
+
+
