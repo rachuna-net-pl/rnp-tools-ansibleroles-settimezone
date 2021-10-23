@@ -1,0 +1,20 @@
+galaxy_info:
+  author: Maciej Rachuna
+  description: Set timezone and locale
+  company: rachuna-net.pl
+  license: BSD 3-Clause
+  min_ansible_version: 2.9
+
+  platforms:
+  - name: Ubuntu
+    versions:
+      - xenial
+      - bionic
+      - focal
+
+  galaxy_tags: [
+    "system",
+    "server",
+  ]
+
+dependencies: []
