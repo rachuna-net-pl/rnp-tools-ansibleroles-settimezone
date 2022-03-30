@@ -20,6 +20,7 @@
   with_items: "{{ input_locale_list }}"
 
 - name: Create missing locales
+  changed_when: False
   command: "localedef -i {{ item | regex_replace('(.*)\\..*', '\\1')  }} -f {{ item | regex_replace('.*\\.(.*)', '\\1') }} {{ item }}"
   loop: "{{ input_locale_list }}"
 
